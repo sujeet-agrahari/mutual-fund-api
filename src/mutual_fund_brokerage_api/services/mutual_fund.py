@@ -1,10 +1,11 @@
 from .external import ExternalService
+import os 
 
 def get_mutual_funds(scheme_type: str):
-    fund_api = ExternalService('https://latest-mutual-fund-nav.p.rapidapi.com')
+    fund_api = ExternalService(url=f"https://{os.getenv('FUND_API_URL')}")
     headers = {
-        'x-rapidapi-host': 'latest-mutual-fund-nav.p.rapidapi.com',
-        'x-rapidapi-key': '63c198c46cmshe4e0e927edb0cb0p17bd85jsn46dcf86675f2'
+        "x-rapidapi-host": os.getenv("FUND_API_URL"),
+        "x-rapidapi-key": os.getenv("FUND_API_KEY"),
     }
     endpoint = '/latest'
     if scheme_type:
