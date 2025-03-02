@@ -1,22 +1,21 @@
 # Mutual Fund API
 This is a simple API that provides mutual fund data. It uses RapidAPI to fetch the data.
 
+
 ## Run the API
-Make sure you have poetry installed. If not, install it using the following command:
+Make sure you have Docker and Docker Compose installed. If not, install them using the following commands:
 ```bash
-pip install poetry
+# Install Docker
+brew install --cask docker
+
+# Install Docker Compose
+brew install docker-compose
 ```
 
-Then, install the dependencies using the following command:
+Then, build and run the Docker containers using the following command:
 ```bash
-poetry install
+docker compose up
 ```
-
-Finally, run the API using the following command:
-```bash
-poetry run start
-```
-
 ## Endpoints
 ### GET /mutual-funds
 This endpoint returns a list of mutual funds. You can filter the mutual funds by passing the `scheme_type` query parameter.

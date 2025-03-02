@@ -1,0 +1,25 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_URL=postgresql://postgres:password@db:5432/mutual_fund_db
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: >
+      /bin/sh -c "poetry install &&
+                  poetry run start"
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mutual_fund_db
+    ports:
+      - "5432:5432"
